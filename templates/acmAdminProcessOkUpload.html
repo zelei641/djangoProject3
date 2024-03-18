@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1/css/bootstrap.min.css' %}">
+    <style>
+        .navbar{
+            border-radius: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+    {#导航栏#}
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/file/list"> 用户上传未处理图片 </a>
+        </div>
+      </div>
+    </nav>
+
+
+    <div class="container">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+          <div class="form-group">
+            <label for="exampleInputFile">请上传jpg,png,jpeg格式的图片</label>
+            <input type="file" id="upload_file" name="upload_photo">
+              <br>
+            <label for="exampleInputFile">(图片的唯一标识)</label>
+              <text>{{ getUserUploadPhotoName }}</text>
+          </div>
+          <button type="submit" class="btn btn-primary">提交</button>
+        </form>
+    </div>
+
+
+
+
+
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap-3.4.1/js/bootstrap.min.js' %}"></script>
+</body>
+</html>
