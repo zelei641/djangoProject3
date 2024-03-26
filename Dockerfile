@@ -18,4 +18,4 @@ EXPOSE 8000
 ENV PYTHONUNBUFFERED 1
 
 # 当容器启动时运行Django项目
-CMD ["gunicorn", "myproject.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
