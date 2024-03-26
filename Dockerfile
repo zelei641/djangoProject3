@@ -10,8 +10,6 @@ COPY . /app
 # 安装任何需要的包
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 收集静态文件到指定目录
-RUN python manage.py collectstatic --noinput
 
 # 对外暴露的端口号
 EXPOSE 8000

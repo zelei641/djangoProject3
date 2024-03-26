@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': 'photomanage',  # 数据库名字
         'USER': 'root',
         'PASSWORD': '123456',
-        'HOST': '127.0.0.1',  # 那台机器安装了MySQL
+        'HOST': '8.130.31.116',  # 那台机器安装了MySQL
         'PORT': 3306,
     }
 }
