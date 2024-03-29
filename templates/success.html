@@ -6,5 +6,32 @@
 </head>
 <body>
     <text>{{ successInfo }}</text>
+
+    <br>
+    <textarea id="myTextarea" rows="4" cols="50">
+    {{ photo_name }}
+    </textarea>
+    <button id="copyButton">复制文本</button>
+    <script>
+    document.getElementById('copyButton').addEventListener('click', function() {
+      // 定义要复制的文本
+      const textarea = document.getElementById('myTextarea');
+
+      // 获取textarea中的文本
+      const textToCopy = textarea.value.textarea.value.replace(/<[^>]*>/g, '').replace(/\s+/g, '');
+
+      // 复制文本到剪贴板
+      navigator.clipboard.writeText(textToCopy)
+        .then(() => {
+          alert('复制成功！请使用唯一标识领取图片');
+        })
+        .catch(err => {
+          // 这可能是因为用户拒绝了剪贴板权限，或者浏览器不支持这个API
+          console.error('无法复制文本: ', err);
+          alert('无法复制文本，请确保浏览器支持剪贴板API且您已授予权限。');
+        });
+    });
+    </script>
 </body>
 </html>
+

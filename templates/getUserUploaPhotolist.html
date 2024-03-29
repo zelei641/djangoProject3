@@ -53,18 +53,21 @@
             <div class="container">
                 {% for photo in allPhoto %}
                   <tr>
-                    <td>{{ photo.photosname }}</td>
+                    <td>
+                        <text id="myTextarea"> {{ photo.photosname }}</text>
+
+                    </td>
                     <td>{{ photo.photostate }}</td>
                     <td>
                         <a class="btn btn-primary btn-xs" href="/acm/admin/admin/getUserUploadPhoto/?getUserUploadPhotoName={{ photo.photosname }}">下载</a>
                         <a class="btn btn-primary btn-xs" href="/acm/admin/admin/acmAdminProcessOkUpload/?getUserUploadPhotoName={{ photo.photosname }}">返回给用户</a>
+
                     </td>
                   </tr>
                 {% endfor %}
             </div>
         </tbody>
     </table>
-
 
 
 <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>

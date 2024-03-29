@@ -1,5 +1,6 @@
 import mimetypes
 import os
+import re
 
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -25,6 +26,10 @@ def photoupload(request):
 
         # 构造真正的图片名称 检查名称是否重复
         photo_name = request.POST.get("photoName")
+        photo_name = re.sub(r'\s+', '', photo_name)
+        print(photo_name)
+        gavegtml = photo_name
+
         if photo_name == '':
             return render(request, 'error.html', {"errorInfo": "上传失败！！：请填写唯一标识"})
         photo_name = photo_name + photo_type[1]
@@ -33,7 +38,7 @@ def photoupload(request):
             return render(request, 'error.html', {"errorInfo": "上传失败！！：请填写唯一标识（学号加第几次上传）"})
 
         # 编辑图片保存地址
-        uploadPhotoSavePaht = os.path.join(settings.BASE_DIR,'photoManage', 'photos/useruUploadPhoto' ,photo_name)
+        uploadPhotoSavePaht = os.path.join(settings.BASE_DIR,'photoManage', 'photos/useruUploadPhoto', photo_name)
         print(uploadPhotoSavePaht)
 
         #如果上传的图片不为空
@@ -45,7 +50,7 @@ def photoupload(request):
                 destination.close()
                 # 保存文件信息
                 models.userUploadPhotos.objects.create(photosname=photo_name, photostate='未处理')
-            return render(request, 'success.html', {"successInfo" : "图片上传成功"})
+            return render(request, 'success.html', {"successInfo" : "图片上传成功", "photo_name":gavegtml})
         else:
             return render(request, 'error.html', {"errorInfo": "请上传图片"})
 
@@ -95,7 +100,7 @@ def acmAdminProcessOkUpload(request):
                 update_userLoad_adta.photostate = '处理完成'
                 update_userLoad_adta.save()
                 models.userGetPhotos.objects.create(photosname=getUserUploadPhotoName, photostate='处理完成')
-            return render(request, 'success.html', {"successInfo" : "图片上传成功"})
+            return render(request, 'success.html', {"successInfo" : "图片上传成功", "photo_name" : getUserUploadPhotoName})
     return render(request, 'acmAdminProcessOkUpload.html', {"getUserUploadPhotoName":getUserUploadPhotoName})
 
 def userGetMyselfUploadPhotoList(request):
