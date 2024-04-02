@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,8 +19,9 @@
       const textarea = document.getElementById('myTextarea');
 
       // 获取textarea中的文本
-      const textToCopy = textarea.value.textarea.value.replace(/<[^>]*>/g, '').replace(/\s+/g, '');
+      const textToCopy = textarea.value.replace(/<[^>]*>/g, '').replace(/\s+/g, '');
 
+      console.log(textarea.value);
       // 复制文本到剪贴板
       navigator.clipboard.writeText(textToCopy)
         .then(() => {
@@ -32,6 +34,7 @@
         });
     });
     </script>
+<script src="{% static 'clipboard.js-master/dist/clipboard.min.js' %}"></script>
 </body>
 </html>
 
