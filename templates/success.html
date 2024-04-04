@@ -4,15 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1/css/bootstrap.min.css' %}">
 </head>
 <body>
-    <text>{{ successInfo }}</text>
 
-    <br>
-    <text style="color: #c7254e">请复制您的唯一标识：</text>
-    <div id="textToCopy">{{ photo_name }}</div>
+    <div class="jumbotron">
+      <h1 class="display-4">请您仔细阅读!!!</h1>
+      <p class="lead">您需要复制您的唯一标识，您可以用唯一标识得到处理好的图片</p>
+    </div>
 
-    <button onclick="copyText()">复制唯一标识</button>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <text>{{ successInfo }}</text>
+        <br>
+        <text style="color: #c7254e">请复制您的唯一标识：</text>
+        <div id="textToCopy">{{ photo_name }}</div>
+        <button type="button" class="btn btn-primary" onclick="copyText()">复制唯一标识</button>
+      </div>
+    </div>
+
+
 
   <script>
         function copyText() {
@@ -41,7 +52,8 @@
         }
     </script>
 
-<script src="{% static 'clipboard.js-master/dist/clipboard.min.js' %}"></script>
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap-3.4.1/js/bootstrap.min.js' %}"></script>
 </body>
 </html>
 

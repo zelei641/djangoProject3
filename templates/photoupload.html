@@ -30,13 +30,23 @@
       </div>
     </nav>
 
+     <div class="jumbotron">
+      <h1 class="display-4">请您仔细阅读!!!</h1>
+      <p class="lead">请您点击下方选择文件按钮选择上传图片</p>
+      <p class="lead">然后您需要在下面的输入框中输入您的唯一标识，可以是学号加第几次上传 或者 手机号加第几次上传 例如：</p>
+      <p class="lead">202102110481(20210211048学号的第一次上传)  </p>
+      <p class="lead">180319799281(18031979928手机号的第一次上传) </p>
+
+    </div>
+
+
 
     <div class="container">
         <form method="post" enctype="multipart/form-data" id="uploadForm">
             {% csrf_token %}
           <div class="form-group">
             <label for="exampleInputFile">请上传jpg,png,jpeg格式的图片</label>
-            <input type="file" name="upload_photo" required="true">
+            <input class="btn btn-success"  type="file" name="upload_photo" required="true">
               <br>
             <label for="exampleInputFile">请填写图片的唯一标识 (学号加第几次上传 或者 手机号加第几次上传) </label>
             <br>
