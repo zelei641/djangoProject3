@@ -135,6 +135,9 @@ def userGetRealPhoto(request):
     if getUserUploadPhotoName == '':
         return render(request, 'error.html', {"errorInfo": "参数错误"})
     else:
+        isStatues = models.userUploadPhotos.objects.filter(photosname=getUserUploadPhotoName).first()
+        if isStatues.photostate == '未处理':
+            return render(request, 'error.html', {"errorInfo": "图片还未处理请耐心等待"})
         print(getUserUploadPhotoName)
         # 获取图片类型
         photoType = mimetypes.guess_type(getUserUploadPhotoName)
