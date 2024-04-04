@@ -30,6 +30,7 @@
       </div>
     </nav>
 
+
      <div class="jumbotron">
       <h1 class="display-4">请您仔细阅读!!!</h1>
       <p class="lead">请您点击下方选择文件按钮选择上传图片</p>
@@ -41,20 +42,20 @@
 
 
 
-    <div class="container">
+    <div class="container" >
         <form method="post" enctype="multipart/form-data" id="uploadForm">
             {% csrf_token %}
           <div class="form-group">
-            <label for="exampleInputFile">请上传jpg,png,jpeg格式的图片</label>
+            <label class="text-success" for="exampleInputFile">请上传jpg,png,jpeg格式的图片</label>
             <input class="btn btn-success"  type="file" name="upload_photo" required="true">
               <br>
-            <label for="exampleInputFile">请填写图片的唯一标识 (学号加第几次上传 或者 手机号加第几次上传) </label>
+            <label class="text-primary" for="exampleInputFile">请填写图片的唯一标识 (学号加第几次上传 或者 手机号加第几次上传) </label>
             <br>
-            <label>例如：202102110481 180319799281</label>
+            <label class="text-primary">例如：202102110481 180319799281</label>
               <br>
             <input type="text" id="upload_file" name="photoName" required="true">
           </div>
-          <button type="submit" class="btn btn-primary">提交</button>
+          <button type="submit" class="btn btn-primary btn-lg">提交</button>
         </form>
     </div>
 
