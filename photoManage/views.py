@@ -26,16 +26,16 @@ def photoupload(request):
 
         # 构造真正的图片名称 检查名称是否重复
         photo_name = request.POST.get("photoName")
-        photo_name = re.sub(r'\s+', '', photo_name)
+        photo_name = re.sub(r'[^a-zA-Z0-9]', '', photo_name)
         print(photo_name)
         gavegtml = photo_name
 
         if photo_name == '':
-            return render(request, 'error.html', {"errorInfo": "上传失败！！：请填写唯一标识"})
+            return render(request, 'error.html', {"errorInfo": "上传失败！！：您的唯一标识不合法"})
         photo_name = photo_name + photo_type[1]
         isPhoto = models.userUploadPhotos.objects.filter(photosname=photo_name).first()
         if isPhoto != None:
-            return render(request, 'error.html', {"errorInfo": "上传失败！！：请填写唯一标识（学号加第几次上传）"})
+            return render(request, 'error.html', {"errorInfo": "上传失败！！：您的唯一标识已被占用"})
 
         # 编辑图片保存地址
         uploadPhotoSavePaht = os.path.join(settings.BASE_DIR,'photoManage', 'photos/useruUploadPhoto', photo_name)
