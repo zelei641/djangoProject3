@@ -24,4 +24,5 @@ urlpatterns = [
     path('acm/admin/admin/acmAdminProcessOkUpload/', views.acmAdminProcessOkUpload),
     path('user/userGetMyselfUploadPhotoList/', views.userGetMyselfUploadPhotoList),
     path('user/userGetRealPhoto/', views.userGetRealPhoto),
+    path('acm/admin/getUserUploaPhotoListOk/', views.getUserUploaPhotoListOk),
 ]

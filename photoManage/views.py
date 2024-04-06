@@ -57,14 +57,26 @@ def photoupload(request):
     return render(request, 'photoupload.html')
 
 def getUserUploaPhotoList(request):
+    #未处理图片的列表
     if request.method == 'POST':
         acmAdmin = request.POST.get("acmAdmin")
         if acmAdmin == 'asdeurnwergfg':
-            allPhoto = models.userUploadPhotos.objects.filter().all()
+            allPhoto = models.userUploadPhotos.objects.filter(photostate="未处理").all()
             for photo in allPhoto:
                 print(photo.photosname)
             return render(request, 'getUserUploaPhotolist.html', {"allPhoto": allPhoto})
     return render(request, 'getUserUploaPhotolist.html', {"allPhoto": ''})
+
+def getUserUploaPhotoListOk(request):
+    #未处理图片的列表
+    if request.method == 'POST':
+        acmAdmin = request.POST.get("acmAdmin")
+        if acmAdmin == 'asdeurnwergfg':
+            allPhoto = models.userUploadPhotos.objects.filter(photostate="处理完成").all()
+            for photo in allPhoto:
+                print(photo.photosname)
+            return render(request, 'getUserUploaPhotoListOk.html', {"allPhoto": allPhoto})
+    return render(request, 'getUserUploaPhotoListOk.html', {"allPhoto": ''})
 
 def getUserUploadPhoto(request):
     getUserUploadPhotoName = request.GET['getUserUploadPhotoName']
